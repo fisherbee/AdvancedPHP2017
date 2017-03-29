@@ -19,7 +19,7 @@
             $birthday = filter_input(INPUT_POST, 'birthday');
             
             $errors = [];
-            $states = array();
+            $states = getStates();
             
             if (isPostRequest()) {
                 

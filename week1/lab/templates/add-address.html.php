@@ -10,7 +10,7 @@
             <?php foreach ($states as $key => $value): ?> 
               <option value="<?php echo $key; ?>" <?php if ( $state == $key ): ?> selected="selected" <?php endif; ?>><?php echo $value; ?></option>
             <?php endforeach; ?>
-        </select>
+        </select> <br />
        
        Zip Code: <input name="zip" value="<?php echo $zip; ?>" /> <br />
        Birthday: <input type="date" name="birthday" value="<?php echo $birthday; ?>" /> <br />
