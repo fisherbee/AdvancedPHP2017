@@ -5,9 +5,11 @@
         <title></title>
     </head>
     <body>
+        <p><a href="add.php">Add Address</a></p>
+        
         <?php
-        include './models/dbconnect.php';
-        include './models/addressCRUD.php';
+        include_once './models/dbconnect.php';
+        include_once './models/addressCRUD.php';
         
         $addresses = readAllAddress();
         
@@ -16,5 +18,7 @@
         
         
         ?>
+        
+        
     </body>
 </html>

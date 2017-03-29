@@ -2,7 +2,7 @@
 
 function readAllAddress() {
     $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM phone");
+    $stmt = $db->prepare("SELECT * FROM address");
     
     $results = array();
     if ($stmt->execute() && $stmt->rowCount() > 0) {

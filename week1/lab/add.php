@@ -5,6 +5,9 @@
         <title></title>
     </head>
     <body>
+        
+        <p><a href="index.php">View Addresses</a></p>
+        
         <?php
             require_once './models/dbconnect.php';
             require_once './models/util.php';
