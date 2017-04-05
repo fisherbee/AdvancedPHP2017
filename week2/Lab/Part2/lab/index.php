@@ -11,7 +11,9 @@
         include_once './models/DB.php';
         include_once './models/Crud.php';
         
-        $addresses = readAllAddress();
+        $crud = new Crud();
+        
+        $addresses = $crud->readAllAddress();
         
         include './templates/view-address.html.php';
         

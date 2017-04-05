@@ -3,9 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        
+        <link rel="stylesheet" href="./templates/bootstrap.min.css">
     </head>
     <body>
-        <p><a href="add.php">Add Address</a></p>
+        <p class="container-fluid">
+        <p><a href="add.php" class="btn btn-primary">Add Address</a></p>
         
         <?php
         include_once './models/dbconnect.php';
@@ -19,6 +22,6 @@
         
         ?>
         
-        
+        </p>
     </body>
 </html>

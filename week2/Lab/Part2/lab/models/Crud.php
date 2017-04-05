@@ -7,8 +7,12 @@
  */
 class Crud extends DB {
     
+    function __construct() {
+        parent::__construct('mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2017', 'root', '');
+    }
+    
     function readAllAddress() {
-        $db = dbconnect();
+        $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM address");
 
         $results = array();
@@ -20,7 +24,7 @@ class Crud extends DB {
     }
     
     function createAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday) {
-        $db = dbconnect();
+        $db = $this->getDB();
 
         $stmt = $db->prepare("INSERT INTO address SET fullname = :fullname, email = :email, addressline1 = :addressline1, city = :city, state = :state, zip = :zip, birthday = :birthday");
         $binds = array(
