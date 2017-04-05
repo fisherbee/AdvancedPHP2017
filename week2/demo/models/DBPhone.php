@@ -5,15 +5,12 @@
  *
  * @author GFORTI
  */
-class DBSpring extends DB {
+class DBPhone extends DB {
     //put your code here
     
     function __construct() {
         
-        $this->setDns('mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2017');
-        $this->setPassword('');
-        $this->setUser('root');
-        
+        parent::__construct('mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2017', 'root', '');
     }
     
     function getAllPhones() {
