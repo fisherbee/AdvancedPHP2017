@@ -1,3 +1,6 @@
+
+<p><a href="Login.php">Log-In Page</a></p>
+
 <h1>Sign-Up</h1>
 <form action="#" method="post">
     

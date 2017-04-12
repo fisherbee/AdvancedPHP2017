@@ -50,19 +50,7 @@ class Accounts extends DB {
     
         return 0;
     }
-    
-    
-    
-    
-    public function checkEmail($email) {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Valid email";
-            return true;
-        } else {
-            echo "Invalid Email";
-        }
-        return false;
-    }
+
     
     
 }

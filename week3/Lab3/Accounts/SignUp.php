@@ -7,27 +7,39 @@
     </head>
     <body>
         <?php
-        
         include './autoload.php';
-        
-        $util = new Util() ;
+
+        $util = new Util();
         $accounts = new Accounts();
-        
+
         $email = filter_input(INPUT_POST, 'email');
         $password = filter_input(INPUT_POST, 'password');
-        
-        if($util->isPostRequest()) {
-            if($accounts->signup($email, $password)) {
-                echo "Sign-Up worked";
-                $util->redirect("Login.php", array("email"=>$email));
-                
-            } else {
-                echo "Did not work";
+        $errors = [];
+
+        if ($util->isPostRequest()) {
+
+
+            if (filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
+                $errors[] = 'Email is not valid';
+            }
+            
+            if(empty($password)) {
+                  $errors[] = 'Password is required'; 
+               }
+
+            if (count($errors) === 0) {
+                if ($accounts->signup($email, $password)) {
+                    $util->redirect("Login.php", array("email" => $email));
+                } else {
+                    echo "Did not work";
+                }
             }
         }
-        
+
+        include './views/errors.html.php';
         include './views/SignUp.html.php';
-        
         ?>
+        
+        
     </body>
 </html>
