@@ -27,7 +27,7 @@
             $states = getStates();
             
             
-            
+            //Validate all the entered data
             if (isPostRequest()) {
                 
                if(empty($fullname)) {

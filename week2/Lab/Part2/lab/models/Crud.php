@@ -1,16 +1,12 @@
 <?php
 
-/**
- * Description of Crud
- *
- * @author 001301554
- */
 class Crud extends DB {
     
     function __construct() {
         parent::__construct('mysql:host=localhost;port=3306;dbname=PHPAdvClassSpring2017', 'root', '');
     }
     
+    //Reads in all the addresses from the table
     function readAllAddress() {
         $db = $this->getDB();
         $stmt = $db->prepare("SELECT * FROM address");
@@ -23,6 +19,7 @@ class Crud extends DB {
         return $results;
     }
     
+    //Input an entered address into the database
     function createAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday) {
         $db = $this->getDB();
 
