@@ -3,7 +3,8 @@
 class Validation {
     
     //Checking for valid zip code
-    function isZipValid($zip) {
+    public function isZipValid($zip) {
+
         $zipRegex = '/^[0-9]{5}$/';
 
         if (preg_match($zipRegex, $zip)) {
@@ -14,12 +15,13 @@ class Validation {
     }
 
     //Checking for a valid date
-    function isDateValid($date) {
+    public function isDateValid($date) {
         return (bool)strtotime($date);
     }
 
-    function isEmailValid($email) {
-
+    public function isEmailValid($email) {
+        return ( is_string($email) && !empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) !== false );
+        
     }
     
 }

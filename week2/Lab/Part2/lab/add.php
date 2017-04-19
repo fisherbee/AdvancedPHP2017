@@ -14,6 +14,7 @@
             require_once './models/Crud.php';
             require_once './models/validation.php';
             
+            $validation = new validation();
             
             $fullname = filter_input(INPUT_POST, 'fullname');
             $email = filter_input(INPUT_POST, 'email');
@@ -34,7 +35,7 @@
                   $errors[] = 'Full name is required'; 
                } 
                 
-               if(filter_var($email, FILTER_VALIDATE_EMAIL) == false) {
+               if($validation->isEmailValid($email)) {
                   $errors[] = 'Email is not valid'; 
                } 
                
@@ -50,11 +51,11 @@
                   $errors[] = 'State is required'; 
                }
                
-               if(!isZipValid($zip)) {
+               if($validation->isZipValid($zip)) {
                    $errors[] = 'Zip Code is invalid';
                }
                
-               if(!isDateValid($birthday)) {
+               if($validation->isDateValid($birthday)) {
                    $errors[] = 'Birthday is invalid';
                }
                

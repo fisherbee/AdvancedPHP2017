@@ -4,8 +4,9 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="./views/bootstrap.min.css">
     </head>
-    <body>
+    <body class="container-fluid">
         <?php
         session_start();
         include './autoload.php';
@@ -22,7 +23,8 @@
             
             if($loginInfo > 0 ) {
                 $_SESSION['user_id'] = $loginInfo;
-                $util->redirect("Admin.php");
+                $_SESSION['email'] = $email;
+                $util->redirect("Admin.php", array("email" => $email));
             } else {
                 echo "Login failed";
             }
