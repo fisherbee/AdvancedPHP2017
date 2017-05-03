@@ -1,6 +1,6 @@
 <?php
 
-include_once './bootstrap.php';
+include_once './autoload.php';
 
 /*
  * The Rest server is sort of like the page is hosting the API
@@ -17,59 +17,40 @@ try {
     $id = $restServer->getId();
     $serverData = $restServer->getServerData();
     
-       
-    /* 
-     * You can add resoruces that will be handled by the server 
-     * 
-     * There are clever ways to use advanced variables to sort of
-     * generalize the code below. That would also require that all
-     * resoruces follow the same standard. Interfaces can ensure that.
-     * 
-     * But in this example we will just code it out.
-     * 
-     */
-    if ( 'address' === $resource ) {
-        
-        $resourceData = new AddressResoruce();
-        
-        if ( 'GET' === $verb ) {
+    $resourceUpperCaseName = ucfirst($resource);
+    $resourceClassName = $resourceUpperCaseName . 'Resource';
+    
+    try {
+        $resourceData = new $resourceClassName();
+    } catch (InvalidArgumentException $e) {
+        throw new InvalidArgumentException($resourceUpperCaseName . ' Resource Not Found');
+    }
+    
+    if ( 'GET' === $verb ) {
             
-            if ( NULL === $id ) {
-                
-                $restServer->setData($resourceData->getAll());                           
-                
-            } else {
-                
-                $restServer->setData($resourceData->get($id));
-                
-            }            
+        if ( NULL === $id ) {
+            $restServer->setData($resourceData->getAll());                           
+        } else {
+            $restServer->setData($resourceData->get($id));
+        }            
             
         }
                 
-        if ( 'POST' === $verb ) {
-            
-
-            if ($resourceData->post($serverData)) {
-                $restServer->setMessage('Address Added');
-                $restServer->setStatus(201);
-            } else {
-                throw new Exception('Address could not be added');
-            }
+    if ( 'POST' === $verb ) {
         
+        if ($resourceData->post($serverData)) {
+            $restServer->setMessage($resourceUpperCaseName . ' Added');
+            $restServer->setStatus(201);
+        } else {
+            throw new Exception($resourceUpperCaseName . ' could not be added');
         }
         
+    }
         
-        if ( 'PUT' === $verb ) {
-            
-            if ( NULL === $id ) {
-                throw new InvalidArgumentException('Address ID ' . $id . ' was not found');
-            }
-            
-        }
-        
-    } else {
-        throw new InvalidArgumentException($resource . ' Resource Not Found');
-        
+    if ( 'PUT' === $verb ) {
+        if ( NULL === $id ) {
+            throw new InvalidArgumentException('Address ID ' . $id . ' was not found');
+        }    
     }
    
     
@@ -85,4 +66,4 @@ try {
 
 
 echo $restServer->getReponse();
-die();
+exit();
