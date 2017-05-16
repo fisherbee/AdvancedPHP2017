@@ -19,24 +19,18 @@ and open the template in the editor.
         $directory = new DirectoryIterator($folder);
            
         ?>
-
+        <table border="1">
         <?php foreach ($directory as $fileInfo) : ?>  
-        
             <?php if ( $fileInfo->isFile() ) : ?>
-        
-                
-        <table>
-            <tr><td><?php echo $fileInfo->getFilename(); ?></td> <td><a href=''>View</a></td> <td>Delete</td></tr>
-            
-        </table>
-                
-                <h2><?php echo $fileInfo->getFilename(); ?></h2>
-                <p>uploaded on <?php echo date("l F j, Y, g:i a", $fileInfo->getMTime()); ?></p>
-                <p>This file is <?php echo $fileInfo->getSize(); ?> byte's</p>
-                <img src="<?php echo $fileInfo->getPathname(); ?>" />
-                
-            <?php endif; ?>
-                
+
+            <tr>
+                <td><?php echo $fileInfo->getFilename(); ?></td> 
+                <td><a href="viewSingle.php?fileName=<?php echo $fileInfo->getPathname(); ?>">View</a></td> 
+                <td>Delete<?php echo $fileInfo->getPathname(); ?></td>
+            </tr>
+             
+            <?php endif; ?>  
         <?php endforeach; ?>
+            </table>
     </body>
 </html>
