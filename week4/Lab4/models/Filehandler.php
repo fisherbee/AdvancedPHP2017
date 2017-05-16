@@ -1,19 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of Files
+ * Description of Filehandler
  *
  * @author 001301554
  */
-class Files {
+class Filehandler {
+    //put your code here
     
-    function upload($keyName) {
+    function upLoad($keyName) {
 
 
                 // Undefined | Multiple Files | $_FILES Corruption Attack
@@ -44,6 +39,13 @@ class Files {
                 // Check MIME Type by yourself.
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
                 $validExts = array(
+                    'txt' => 'text/plain',
+                    'html' => 'text/html',
+                    'pdf' => 'application/pdf',
+                    'doc' => 'application/msword',
+                    'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'xls' => 'application/vnd.ms-excel',
+                    'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                     'jpg' => 'image/jpeg',
                     'png' => 'image/png',
                     'gif' => 'image/gif'
@@ -55,8 +57,12 @@ class Files {
                     throw new RuntimeException('Invalid file format.');
                 }
 
+                // You should name it uniquely.
+                // DO NOT USE $_FILES['upfile']['name'] WITHOUT ANY VALIDATION !!
+                // On this example, obtain safe unique name from its binary data.
+
                 $salt = uniqid(mt_rand(), true);
-                $fileName = 'img_' . sha1($salt . sha1_file($_FILES[$keyName]['tmp_name']));
+                $fileName = 'file_' . sha1($salt . sha1_file($_FILES[$keyName]['tmp_name']));
                 $location = sprintf('./uploads/%s.%s', $fileName, $ext);
 
                 if (!is_dir('./uploads')) {
@@ -69,5 +75,4 @@ class Files {
 
                 return $fileName . '.' . $ext;
             }
-    
 }
