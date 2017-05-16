@@ -26,17 +26,23 @@
             case 'jpg':?>
             <?php case 'png': ?>
             <?php case 'jpeg': ?>
-        <img src="<?php echo $fileName; ?>">
+                <img src="<?php echo $fileName; ?>">
             <?php break; ?>
         
             <?php case 'txt': ?>
-        <textarea><?php echo $contents; ?></textarea>
+                <textarea><?php echo $contents; ?></textarea>
             <?php break; ?>
         
-        <?php case 'html': ?>
-        <?php case 'pdf': ?>
-        <iframe src="<?php echo $fileName; ?>"></iframe>
-        <?php break; ?>
+            <?php case 'html': ?>
+            <?php case 'pdf': ?>
+                <iframe src="<?php echo $fileName; ?>"></iframe>
+            <?php break; ?>
+                
+            <?php case 'doc': ?>
+            <?php case 'docx': ?>
+                
+            <?php case 'doc': ?>
+            <?php case 'docx': ?>
             
         <?php endswitch; ?>
     </body>
