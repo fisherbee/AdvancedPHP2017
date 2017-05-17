@@ -6,6 +6,9 @@
         <title></title>
     </head>
     <body>
+        
+        <p><a href="index.php">Add File</a></p>
+        
         <?php
         // put your code here
         $fileName = filter_input(INPUT_GET, 'fileName');
@@ -25,6 +28,7 @@
         <?php switch($fileType):
             case 'jpg':?>
             <?php case 'png': ?>
+            <?php case 'gif': ?>
             <?php case 'jpeg': ?>
                 <img src="<?php echo $fileName; ?>">
             <?php break; ?>
@@ -37,13 +41,7 @@
             <?php case 'pdf': ?>
                 <iframe src="<?php echo $fileName; ?>"></iframe>
             <?php break; ?>
-                
-            <?php case 'doc': ?>
-            <?php case 'docx': ?>
-                
-            <?php case 'doc': ?>
-            <?php case 'docx': ?>
-            
+
         <?php endswitch; ?>
     </body>
 </html>

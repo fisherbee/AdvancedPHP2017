@@ -8,8 +8,10 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
+        
     </head>
     <body>
+        <p><a href="index.php">Add File</a></p>
         <?php
 
         $folder = './uploads';
@@ -26,7 +28,7 @@ and open the template in the editor.
             <tr>
                 <td><?php echo $fileInfo->getFilename(); ?></td> 
                 <td><a href="viewSingle.php?fileName=<?php echo $fileInfo->getPathname(); ?>">View</a></td> 
-                <td>Delete<?php echo $fileInfo->getPathname(); ?></td>
+                <td><a href="delete.php?fileName=<?php echo $fileInfo->getPathname(); ?>">Delete</a></td>
             </tr>
              
             <?php endif; ?>  

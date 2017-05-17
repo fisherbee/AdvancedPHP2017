@@ -6,6 +6,7 @@
         <title></title>
     </head>
     <body>
+        <p><a href="viewFiles.php">View Files</a></p>
         <?php
         // put your code here
         include './autoload.php';
@@ -21,7 +22,6 @@
             }
             
         }
-        
         ?>
         
         <?php if(isset($error)): ?>
