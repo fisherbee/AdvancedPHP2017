@@ -51,6 +51,26 @@ class CorpsResource extends DBSpring implements IRestModel{
         return false;
     }
     public function put($id, $serverData){
+        try {
+            $stmt = $this->getDb()->prepare("UPDATE corps SET corp = :corp, incorp_dt = :incorp_dt, email = :email, owner = :owner, phone = :phone, location = :location WHERE id= :id");
+            
+            $binds = array(
+                ":corp" => $serverData['corp'],
+                ":incorp_dt" => $serverData['incorp_dt'],
+                ":email" => $serverData['email'],
+                ":owner" => $serverData['owner'],
+                ":phone" => $serverData['phone'],
+                ":location" => $serverData['location']
+            );
+            
+            if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+                return true;
+            } 
+            return false;
+            
+        } catch(PDOException $e) {
+            $error = $e->getMessage();
+        }
     }
     
     public function delete($id) {
