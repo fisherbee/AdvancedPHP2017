@@ -6,8 +6,9 @@
         <title></title>
     </head>
     <body>
-        <p><a href="viewFiles.php">View Files</a></p>
+        
         <?php
+        include './links.template.php';
         // put your code here
         include './autoload.php';
         

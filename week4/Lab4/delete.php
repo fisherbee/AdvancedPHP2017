@@ -7,6 +7,7 @@
     </head>
     <body>
         <?php
+            include './links.template.php';
             $fileName = filter_input(INPUT_GET, 'fileName');
             
             try {

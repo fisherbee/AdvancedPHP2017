@@ -11,9 +11,9 @@ and open the template in the editor.
         
     </head>
     <body>
-        <p><a href="index.php">Add File</a></p>
+        
         <?php
-
+        include './links.template.php';
         $folder = './uploads';
         if ( !is_dir($folder) ) {
             die('Folder <strong>' . $folder . '</strong> does not exist' );

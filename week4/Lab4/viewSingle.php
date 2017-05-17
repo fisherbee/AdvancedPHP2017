@@ -6,10 +6,9 @@
         <title></title>
     </head>
     <body>
-        
-        <p><a href="index.php">Add File</a></p>
-        
+
         <?php
+        include './links.template.php';
         // put your code here
         $fileName = filter_input(INPUT_GET, 'fileName');
         $file = new SplFileObject($fileName, "r");
@@ -24,6 +23,7 @@
         <p>File Type: <?php echo $fileType; ?></p>
         <p>Date Created: <?php echo $dateCreated; ?></p>
         <p>Download: <a href="<?php echo $fileName; ?>"><?php echo $fileName; ?></a></p>
+        <p><a href="delete.php?fileName=<?php echo $fileName; ?>">Delete</a></p>
         
         <?php switch($fileType):
             case 'jpg':?>
