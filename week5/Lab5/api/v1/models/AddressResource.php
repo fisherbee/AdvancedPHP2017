@@ -29,10 +29,10 @@ class AddressResource extends DBSpring implements IRestModel {
     
     public function post($serverData) {
         /* note you should validate before adding to the data base */
-        $stmt = $this->getDb()->prepare("INSERT INTO address SET fullname = :fullname, email = :email, addressline1 = :addressline1, city = :city, state = :state, zip = :zip, birthday = :birthday");
+        $stmt = $this->getDb()->prepare("INSERT INTO address SET fullname = :fullname, addrEmail = :addrEmail, addressline1 = :addressline1, city = :city, state = :state, zip = :zip, birthday = :birthday");
         $binds = array(
             ":fullname" => $serverData['fullname'],
-            ":email" => $serverData['email'],
+            ":addrEmail" => $serverData['addrEmail'],
             ":addressline1" => $serverData['addressline1'],
             ":city" => $serverData['city'],
             ":state" => $serverData['state'],

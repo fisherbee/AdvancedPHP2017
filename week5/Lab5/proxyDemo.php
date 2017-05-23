@@ -31,10 +31,12 @@
         <input name="resource" value="address" />
         <br />
         <br />
+        
+        
         Data(optional):<br />   
         fullname <input type="text" name="fullname" value="" />
         <br />
-        email <input type="email" name="email" value="" />
+        email <input type="email" name="addrEmail" value="" />
         <br />
         addressline1 <input type="text" name="addressline1" value="" />
         <br />
@@ -47,7 +49,26 @@
         birthday <input type="date" name="birthday">
         <br />
         <br />
+        <br />
+        <br />
+        
+        Corps Data:<br />   
+        Corp: <input type="text" name="corp" value="" />
+        <br />
+        incorp_dt:  <input type="text" name="incorp_dt" value="" />
+        <br />
+        Email: <input type="text" name="email" value="" />
+        <br />
+        Owner: <input type="text" name="owner" value="" />
+        <br />
+        Phone: <input type="text" name="phone" value="" />
+        <br />
+        Location: <input type="text" name="location" value="" />
+        <br />
+        <br />
+        <br />
         <button>Make Call</button>
+        
         <h3>Results</h3>
 
         <textarea name="results"></textarea>
@@ -62,12 +83,19 @@
                 var resource = document.querySelector('input[name="resource"]').value;
                 var data = {
                     'fullname': document.querySelector('input[name="fullname"]').value,
-                    'email': document.querySelector('input[name="email"]').value,
+                    'addrEmail': document.querySelector('input[name="addrEmail"]').value,
                     'addressline1': document.querySelector('input[name="addressline1"]').value,
                     'city': document.querySelector('input[name="city"]').value,
                     'state': document.querySelector('input[name="state"]').value,
                     'zip': document.querySelector('input[name="zip"]').value,
-                    'birthday': document.querySelector('input[name="birthday"]').value
+                    'birthday': document.querySelector('input[name="birthday"]').value,
+                    
+                    'corp': document.querySelector('input[name="corp"]').value,
+                    'incorp_dt': document.querySelector('input[name="incorp_dt"]').value,
+                    'email': document.querySelector('input[name="email"]').value,
+                    'owner': document.querySelector('input[name="owner"]').value,
+                    'phone': document.querySelector('input[name="phone"]').value,
+                    'location': document.querySelector('input[name="location"]').value
                 };
                 var results = document.querySelector('textarea[name="results"]');
 

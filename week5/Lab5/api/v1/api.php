@@ -51,11 +51,23 @@ try {
         if ( NULL === $id ) {
             throw new InvalidArgumentException($resourceUpperCaseName . ' ID was not found');
         }    
+        
+        if ($resourceData->put($id, $serverData)) {
+            $restServer->setMessage($resourceUpperCaseName . ' Updated');
+        } else {
+            throw new Exception($resourceUpperCaseName . ' could not be updated');
+        }
     }
    
     if( 'DELETE' === $verb ) {
         if(NULL === $id) {
             throw new InvalidArgumentException($resourceUpperCaseName . ' ID was not found');
+        }
+        
+        if ($resourceData->delete($id)) {
+            $restServer->setMessage($resourceUpperCaseName . ' Deleted');
+        } else {
+            throw new Exception($resourceUpperCaseName . ' could not be deleted');
         }
     }
     
