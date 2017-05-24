@@ -28,27 +28,10 @@
         <br />
         <br />
         Resource for endpoint:<br />
-        <input name="resource" value="address" />
+        <input name="resource" value="corps" />
         <br />
         <br />
-        
-        
-        Data(optional):<br />   
-        fullname <input type="text" name="fullname" value="" />
-        <br />
-        email <input type="email" name="addrEmail" value="" />
-        <br />
-        addressline1 <input type="text" name="addressline1" value="" />
-        <br />
-        city <input type="text" name="city" value="" />
-        <br />
-        state <input type="text" name="state" list="states" placeholder="Find U.S. State">
-        <br />
-        zip <input type="number" pattern="[0-9]*" maxlength="5" min="0" name="zip">
-        <br />
-        birthday <input type="date" name="birthday">
-        <br />
-        <br />
+
         <br />
         <br />
         
